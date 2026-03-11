@@ -1,0 +1,26 @@
+{
+  "entities": {
+    "Note": {
+      "title": "Note",
+      "description": "A single note in the knowledge base",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "description": "Unique identifier for the note" },
+        "title": { "type": "string", "description": "Title of the note" },
+        "content": { "type": "string", "description": "Markdown content of the note" },
+        "parentId": { "type": "string", "description": "ID of the parent note, or null if root" },
+        "order": { "type": "number", "description": "Display order among siblings" },
+        "updatedAt": { "type": "number", "description": "Timestamp of last update" },
+        "tags": { "type": "array", "items": { "type": "string" }, "description": "List of tags" },
+        "uid": { "type": "string", "description": "Owner's user ID" }
+      },
+      "required": ["id", "title", "content", "order", "updatedAt", "tags", "uid"]
+    }
+  },
+  "firestore": {
+    "/notes/{noteId}": {
+      "schema": "Note",
+      "description": "Collection of notes indexed by note ID"
+    }
+  }
+}
